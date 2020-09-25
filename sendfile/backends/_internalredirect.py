@@ -21,5 +21,5 @@ def _convert_file_to_url(filename):
 
     # Python3 urllib.parse.quote accepts both unicode and bytes, while Python2 urllib.quote only accepts bytes.
     # So use bytes for quoting and then go back to unicode.
-    url = [smart_bytes(url_component) for url_component in url]
+    url = [url_component for url_component in url]
     return smart_text(quote('/'.join(url)))

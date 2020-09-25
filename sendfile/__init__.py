@@ -54,11 +54,6 @@ def sendfile(request, filename, attachment=False, attachment_filename=None, mime
     '''
     _sendfile = _get_sendfile()
 
-    try:
-        filename = filename.decode("utf-8")
-    except:
-        pass
-
     if not os.path.exists(filename):
         from django.http import Http404
         raise Http404('"%s" does not exist' % filename)

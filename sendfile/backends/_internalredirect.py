@@ -5,6 +5,8 @@ import os.path
 from django.conf import settings
 from django.utils.encoding import smart_text, smart_bytes
 
+logger = logging.getLogger('django')
+
 try:
     from urllib.parse import quote
 except ImportError:
@@ -12,16 +14,16 @@ except ImportError:
 
 
 def _convert_file_to_url(filename):
-    logging.debug('converting {} to URL'.format(filename))
+    logger.debug('converting {} to URL'.format(filename))
     relpath = os.path.relpath(filename, settings.SENDFILE_ROOT)
-    logging.debug('relpath is {}'.format(relpath))
+    logger.debug('relpath is {}'.format(relpath))
     url = [settings.SENDFILE_URL]
 
     while relpath:
         relpath, head = os.path.split(relpath)
         url.insert(1, head)
 
-    logging.debug('URL is {}'.format(url))
+    logger.debug('URL is {}'.format(url))
 
     # Python3 urllib.parse.quote accepts both unicode and bytes, while Python2 urllib.quote only accepts bytes.
     # So use bytes for quoting and then go back to unicode.

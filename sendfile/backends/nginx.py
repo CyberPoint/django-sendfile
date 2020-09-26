@@ -18,7 +18,7 @@ def sendfile(request, filename, **kwargs):
     logger.debug( response )
     logger.debug( response._headers )
 
-    response._headers['X-Accel-Redirect'] = ('X-Accel-Redirect',url)
+    response._headers['X-Accel-Redirect'] = url
 
     logger.info( "post converted URL is {}".format(response['X-Accel-Redirect']) )
 

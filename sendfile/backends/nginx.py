@@ -13,7 +13,7 @@ def sendfile(request, filename, **kwargs):
 
     logger.info( 'converted URL is {}'.format(url) )
 
-    response['X-Accel-Redirect'] = url.encode('utf-8')
+    response['X-Accel-Redirect'] = url
 
     logger.info( "converted URL is '{}'".format(response['X-Accel-Redirect']) )
 

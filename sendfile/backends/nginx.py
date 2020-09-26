@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import absolute_import,unicode_literals
 
 import logging
 from django.http import HttpResponse
@@ -15,8 +15,9 @@ def sendfile(request, filename, **kwargs):
 
     response['X-Accel-Redirect'] = url.encode('utf-8')
 
-    response._headers['x-accel-redirect'] = ('X-Accel-Redirect', url.encode('utf-8'))
+    logger.debug( response )
+    logger.debug( response._headers )
 
-    logger.info( "converted URL is '{}'".format(response['X-Accel-Redirect']) )
+    logger.info( "post converted URL is {}".format(response['X-Accel-Redirect']) )
 
     return response

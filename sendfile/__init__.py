@@ -1,6 +1,7 @@
 VERSION = (0, 3, 11)
 __version__ = '.'.join(map(str, VERSION))
 
+import logging
 import os.path
 from mimetypes import guess_type
 import unicodedata
@@ -52,6 +53,7 @@ def sendfile(request, filename, attachment=False, attachment_filename=None, mime
     If no mimetype or encoding are specified, then they will be guessed via the
     filename (using the standard python mimetypes module)
     '''
+    logging.info("sendfile called against {}".format(filename))
     _sendfile = _get_sendfile()
 
     if not os.path.exists(filename):

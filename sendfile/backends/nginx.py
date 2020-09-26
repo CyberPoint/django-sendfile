@@ -15,4 +15,6 @@ def sendfile(request, filename, **kwargs):
 
     response['X-Accel-Redirect'] = url.encode('utf-8')
 
+    logger.info( "converted URL is '{}'".format(response['X-Accel-Redirect']) )
+
     return response

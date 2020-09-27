@@ -8,7 +8,7 @@ from ._internalredirect import _convert_file_to_url
 logger = logging.getLogger('django')
 
 def sendfile(request, filename, **kwargs):
-    response = CATOHttpResponse()
+    response = HttpResponse()
     url = _convert_file_to_url(filename)
 
     logger.info( 'converted URL is {}'.format(url) )

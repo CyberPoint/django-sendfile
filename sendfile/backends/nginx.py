@@ -1,5 +1,5 @@
 from __future__ import absolute_import,unicode_literals
-
+from builtins import bytes
 import logging
 from django.http import HttpResponse
 
@@ -13,7 +13,7 @@ def sendfile(request, filename, **kwargs):
 
     logger.info( 'converted URL is {}'.format(url) )
 
-    response['X-Accel-Redirect'] = url
+    response['X-Accel-Redirect'] = bytes(url).decode('utf-8', 'surrogateescape')
 
     logger.debug( response )
     logger.debug( response._headers )

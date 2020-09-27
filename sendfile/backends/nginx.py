@@ -296,7 +296,7 @@ class CATOHttpResponse(CATOHttpResponseBase):
     streaming = False
 
     def __init__(self, content=''):
-        super().__init__(*args, **kwargs)
+        super().__init__()
         # Content is a bytestring. See the `content` property methods.
         self.content = content
 

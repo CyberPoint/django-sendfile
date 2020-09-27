@@ -93,5 +93,6 @@ def sendfile(request, filename, attachment=False, attachment_filename=None, mime
         encoding = guessed_encoding
     if encoding:
         response['Content-Encoding'] = encoding
-
+    logging.debug("completed sendfile")
+    logging.debug( response._headers )
     return response

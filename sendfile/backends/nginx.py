@@ -13,7 +13,7 @@ def sendfile(request, filename, **kwargs):
 
     logger.info( 'converted URL is {}'.format(url) )
 
-    response['X-Accel-Redirect'] = bytes(url, 'utf-8').decode('utf-8', 'surrogateescape')
+    response['X-Accel-Redirect'] = str(bytes(url, 'utf-8').decode('utf-8', 'surrogateescape'))
 
     logger.debug( response )
     logger.debug( response._headers )
